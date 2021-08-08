@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CardContainer extends StatefulWidget {
+class CardContainer extends StatelessWidget {
   final double _margin;
   final double? _height;
   final double? _width;
@@ -22,20 +22,15 @@ class CardContainer extends StatefulWidget {
         _radius = radius;
 
   @override
-  _CardContainerState createState() => _CardContainerState();
-}
-
-class _CardContainerState extends State<CardContainer> {
-  @override
   Widget build(BuildContext context) {
     return Container(
-      child: widget._child,
-      margin: EdgeInsets.all(widget._margin),
-      height: widget._height,
-      width: widget._width,
+      child: _child,
+      margin: EdgeInsets.all(_margin),
+      height: _height,
+      width: _width,
       decoration: BoxDecoration(
-        color: widget._color,
-        borderRadius: BorderRadius.circular(widget._radius),
+        color: _color,
+        borderRadius: BorderRadius.circular(_radius),
       ),
     );
   }
