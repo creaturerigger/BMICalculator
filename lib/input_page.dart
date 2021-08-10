@@ -16,27 +16,7 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Color maleCardColour = inactiveCardColour;
-  Color femaleCardColour = inactiveCardColour;
-
-  void updateColour(Gender gender) {
-    if (gender == Gender.Male) {
-      if (maleCardColour == inactiveCardColour) {
-        maleCardColour = activeCardColour;
-        femaleCardColour = inactiveCardColour;
-      } else {
-        maleCardColour = inactiveCardColour;
-      }
-    }
-    if (gender == Gender.Female) {
-      if (femaleCardColour == inactiveCardColour) {
-        femaleCardColour = activeCardColour;
-        maleCardColour = inactiveCardColour;
-      } else {
-        femaleCardColour = inactiveCardColour;
-      }
-    }
-  }
+  Gender? _selectedGender;
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +35,13 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updateColour(Gender.Male);
+                        _selectedGender = Gender.Male;
                       });
                     },
                     child: CardContainer(
-                      color: maleCardColour,
+                      color: _selectedGender == Gender.Male
+                          ? activeCardColour
+                          : inactiveCardColour,
                       child: IconContent(
                         icon: FontAwesomeIcons.mars,
                         label: 'MALE',
@@ -71,11 +53,13 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updateColour(Gender.Female);
+                        _selectedGender = Gender.Female;
                       });
                     },
                     child: CardContainer(
-                      color: femaleCardColour,
+                      color: _selectedGender == Gender.Female
+                          ? activeCardColour
+                          : inactiveCardColour,
                       child: IconContent(
                         icon: FontAwesomeIcons.venus,
                         label: "FEMALE",
