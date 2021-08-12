@@ -16,6 +16,8 @@ class ResultsPage extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: Container(
+              padding: EdgeInsets.all(15.0),
+              alignment: Alignment.bottomLeft,
               child: Text(
                 'Your Result',
                 style: kTitleTextStyle,
@@ -38,7 +40,7 @@ class ResultsPage extends StatelessWidget {
                     style: kBMITextStyle,
                   ),
                   Text(
-                    'Your BMI result is quite low you shold eat more',
+                    'Your BMI result is quite low you should eat more',
                     style: kBodyTextStyle,
                     textAlign: TextAlign.center,
                   ),
@@ -50,7 +52,9 @@ class ResultsPage extends StatelessWidget {
           Expanded(
             child: BMICalculateButton(
               buttonText: 'RE-CALCULATE',
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+              },
             ),
           ),
         ],
